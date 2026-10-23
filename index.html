@@ -1,0 +1,551 @@
+
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111110">
+<meta name="description" content="Revival Studios, Subiaco. A space for the cut, the coffee, the clothing and the community.">
+<title>Revival Studios — The Cut. The Coffee. The Community.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Italiana&display=swap" rel="stylesheet">
+<style>
+:root{
+ --black:#111110;
+ --ink:#191918;
+ --cream:#eeece6;
+ --white:#f9f8f5;
+ --grey:#92918d;
+ --line:#cccac3;
+ --lime:#d7e1be;
+ --max:1480px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:75px}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"DM Sans",sans-serif;-webkit-font-smoothing:antialiased}
+body.lock{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+img{display:block;width:100%;height:100%;object-fit:cover}
+::selection{background:var(--lime);color:#111}
+.container{width:min(calc(100% - 64px),var(--max));margin:auto}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.19em;text-transform:uppercase}
+.display{font-family:Manrope,sans-serif;font-weight:800;letter-spacing:-.075em;line-height:.88}
+.serif{font-family:Italiana,serif;font-weight:400}
+.arrow{display:inline-block;transition:transform .3s}
+a:hover .arrow{transform:translate(4px,-4px)}
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:42px;padding:16px 19px;border:1px solid currentColor;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;transition:background .3s,color .3s}
+.btn:hover{background:var(--ink);color:white}
+.btn-light:hover{background:white;color:var(--black)}
+.line{height:1px;background:currentColor;opacity:.25}
+header{position:absolute;top:0;left:0;width:100%;z-index:30;color:white;border-bottom:1px solid #ffffff50}
+.nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.wordmark{font-family:Manrope,sans-serif;font-size:19px;font-weight:800;letter-spacing:-.08em;line-height:.85}
+.wordmark span{display:block}
+.navlinks{display:flex;align-items:center;gap:32px}
+.navlinks a{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.navlinks a:hover{opacity:.6}
+.navright{display:flex;align-items:center;gap:12px}
+.navbook{border:1px solid #fff;padding:13px 17px;font-size:10px;font-weight:700;letter-spacing:.08em}
+.menu-toggle{display:none;background:none;border:0;color:inherit;padding:8px;cursor:pointer}
+.menu-toggle span{display:block;width:24px;height:1px;background:currentColor;margin:6px 0}
+.mobile-menu{display:none}
+.hero{position:relative;min-height:810px;height:100svh;max-height:1100px;color:white;background:#222;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{filter:grayscale(1) brightness(.52);animation:heroZoom 14s ease-out both}
+@keyframes heroZoom{from{transform:scale(1.1)}to{transform:scale(1)}}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0008 0%,transparent 38%,#000b 100%);pointer-events:none}
+.hero-content{position:absolute;z-index:2;left:0;right:0;bottom:52px}
+.hero-meta{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #ffffff70;padding-top:15px;font-size:10px;font-weight:600;letter-spacing:.13em;text-transform:uppercase}
+.hero h1{font-size:clamp(74px,13.7vw,240px);margin:28px 0 30px;white-space:nowrap}
+.hero-bottom{display:flex;align-items:end;justify-content:space-between;gap:24px}
+.hero-bottom p{font-size:clamp(17px,2.3vw,28px);line-height:1.35;letter-spacing:-.045em;margin:0;max-width:480px}
+.hero-bottom .btn{min-width:180px}
+.ticker{background:var(--black);color:white;overflow:hidden;padding:19px 0}
+.ticker-track{display:flex;gap:48px;width:max-content;animation:marquee 30s linear infinite}
+.ticker span{font-family:Manrope;font-size:12px;font-weight:700;letter-spacing:.16em;white-space:nowrap}
+.ticker i{font-style:normal;color:#8c8b85}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.intro{padding:145px 0 160px}
+.intro-top{display:flex;justify-content:space-between;gap:30px}
+.intro .eyebrow{padding-top:10px}
+.intro h2{font-size:clamp(44px,7.5vw,120px);margin:0;max-width:1050px}
+.intro h2 em{font-weight:400;font-family:Italiana;letter-spacing:-.035em}
+.intro-bottom{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:90px;align-items:end}
+.intro-bottom .num{font-size:11px;font-weight:700}
+.intro-bottom p{font-size:17px;line-height:1.7;max-width:470px;margin:0 0 28px}
+.section-label{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-top:1px solid var(--line);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.experiences{padding-bottom:140px}
+.experience{display:grid;grid-template-columns:1fr 1fr;min-height:680px}
+.experience.reverse .experience-image{order:2}
+.experience-image{position:relative;overflow:hidden;background:#aaa;min-height:520px}
+.experience-image img{transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.experience:hover .experience-image img{transform:scale(1.045)}
+.experience-copy{background:#d9d7d0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(30px,5vw,90px)}
+.experience:nth-of-type(3) .experience-copy{background:#222220;color:#f4f3ef}
+.experience:nth-of-type(4) .experience-copy{background:#e6e4dd}
+.experience-index{display:flex;justify-content:space-between;font-size:11px;font-weight:700;letter-spacing:.13em}
+.experience-copy h3{font-size:clamp(68px,9vw,150px);margin:45px 0 25px}
+.experience-copy .serif{font-size:clamp(42px,6vw,90px);line-height:1;margin:0 0 25px}
+.experience-copy p{max-width:380px;font-size:15px;line-height:1.8;opacity:.85}
+.experience-copy .btn{align-self:flex-start;margin-top:32px}
+.photo-note{position:absolute;bottom:22px;left:25px;color:white;font-size:10px;letter-spacing:.15em;text-shadow:0 1px 12px #000}
+.full-image{height:clamp(460px,70vw,950px);position:relative;background:#333}
+.full-image img{filter:grayscale(1) brightness(.66)}
+.full-image-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(25px,5vw,80px);color:white}
+.full-image-overlay h2{font-size:clamp(60px,11vw,175px);margin:0}
+.full-image-overlay p{max-width:370px;font-size:16px;line-height:1.6}
+.collection{background:var(--white);padding:140px 0}
+.collection-head{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:55px}
+.collection-head h2{font-size:clamp(65px,11vw,165px);margin:22px 0 0}
+.collection-head p{max-width:270px;font-size:14px;line-height:1.6}
+.collection-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+.collection-photo{height:680px;background:#ddd;overflow:hidden}
+.collection-photo img{transition:transform .7s}
+.collection-photo:hover img{transform:scale(1.035)}
+.collection-photo:nth-child(2) img{filter:grayscale(1)}
+.collection-caption{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #c9c7c0;padding:18px 0;font-size:11px;font-weight:700;letter-spacing:.08em}
+.collection-footer{margin-top:50px;display:flex;justify-content:space-between;gap:30px;align-items:center}
+.collection-footer p{max-width:430px;font-size:15px;line-height:1.7}
+.statement{background:var(--lime);padding:130px 0 145px}
+.statement .eyebrow{margin-bottom:65px}
+.statement h2{font-size:clamp(62px,11.5vw,180px);margin:0;max-width:1350px}
+.statement h2 em{font-family:Italiana;font-weight:400}
+.statement-foot{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-top:85px}
+.statement-foot p{max-width:400px;line-height:1.7;font-size:16px}
+.culture{padding:135px 0;background:#20201e;color:#f6f5f0}
+.culture-top{display:flex;justify-content:space-between;align-items:end;margin-bottom:55px;gap:25px}
+.culture h2{font-size:clamp(70px,12vw,175px);margin:20px 0 0}
+.culture-top p{max-width:300px;line-height:1.7;font-size:15px;color:#c1c0b9}
+.culture-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.culture-photo{height:540px;overflow:hidden}
+.culture-photo img{filter:grayscale(1);transition:transform .8s}
+.culture-photo:hover img{transform:scale(1.05)}
+.culture-photo:nth-child(2){margin-top:100px}
+.culture-caption{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.12em;padding:18px 0;border-top:1px solid #777;margin-top:20px}
+.visit{padding:135px 0;background:var(--cream)}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:8vw}
+.visit h2{font-size:clamp(85px,14vw,210px);margin:25px 0 40px}
+.visit p{font-size:17px;line-height:1.7;max-width:460px}
+.visit-photo{height:660px;overflow:hidden}
+.visit-photo img{filter:grayscale(.55)}
+.visit-details{margin-top:60px}
+.visit-details div{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding:20px 0;font-size:12px}
+.visit-details strong{font-size:10px;letter-spacing:.13em}
+.visit-details span{text-align:right}
+.visit-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:35px}
+footer{background:#111110;color:#f4f3ed;padding:75px 0 25px}
+.footer-top{display:flex;justify-content:space-between;gap:30px}
+.footer-top p{max-width:330px;font-size:14px;line-height:1.7;color:#aaa9a3}
+.footer-links{display:flex;gap:70px}
+.footer-links div{display:flex;flex-direction:column;gap:17px}
+.footer-links a{font-size:12px}
+.footer-links a:hover{text-decoration:underline}
+.footer-logo{font-size:clamp(75px,15.3vw,240px);margin:110px 0 30px;white-space:nowrap}
+.footer-bottom{display:flex;justify-content:space-between;gap:15px;border-top:1px solid #444;padding-top:20px;color:#999;font-size:10px;letter-spacing:.09em}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+ .reveal{opacity:1;transform:none}
+}
+@media(max-width:950px){
+ .navlinks{gap:15px}
+ .experience{min-height:540px}
+ .experience-image{min-height:500px}
+ .experience-copy{padding:35px}
+ .experience-copy h3{font-size:clamp(65px,9vw,100px)}
+ .collection-photo{height:480px}
+ .culture-photo{height:400px}
+ .visit-photo{height:520px}
+}
+@media(max-width:700px){
+ .container{width:calc(100% - 36px)}
+ .nav{height:70px}
+ .wordmark{font-size:17px}
+ .navlinks{display:none}
+ .navbook{padding:11px;font-size:9px}
+ .menu-toggle{display:block}
+ .mobile-menu{position:fixed;z-index:29;inset:0;background:#111;color:white;display:flex;flex-direction:column;justify-content:center;padding:30px;transform:translateX(100%);transition:transform .4s}
+ .mobile-menu.open{transform:translateX(0)}
+ .mobile-menu a{font-family:Manrope;font-size:clamp(42px,10vw,70px);font-weight:800;letter-spacing:-.07em;padding:9px 0}
+ header{position:absolute}
+ .hero{height:100svh;min-height:650px;max-height:950px}
+ .hero-bg img{object-position:45% center}
+ .hero-content{bottom:35px}
+ .hero h1{font-size:clamp(55px,13.1vw,95px);letter-spacing:-.08em;margin:25px 0 30px}
+ .hero-meta{font-size:8px}
+ .hero-bottom{align-items:start;flex-direction:column}
+ .hero-bottom p{font-size:19px}
+ .hero-bottom .btn{margin-top:15px}
+ .intro{padding:90px 0}
+ .intro-top{display:block}
+ .intro .eyebrow{margin-bottom:35px}
+ .intro h2{font-size:clamp(44px,11vw,78px)}
+ .intro-bottom{grid-template-columns:1fr;gap:25px;margin-top:45px}
+ .intro-bottom p{font-size:15px}
+ .experiences{padding-bottom:80px}
+ .experience{grid-template-columns:1fr;min-height:0}
+ .experience.reverse .experience-image{order:0}
+ .experience-image{height:480px;min-height:0}
+ .experience-copy{min-height:440px;padding:30px 24px}
+ .experience-copy h3{font-size:clamp(75px,17vw,115px);margin:35px 0 20px}
+ .experience-copy .serif{font-size:65px}
+ .experience-copy p{font-size:14px}
+ .full-image{height:600px}
+ .full-image-overlay h2{font-size:clamp(65px,15vw,110px)}
+ .collection{padding:90px 0}
+ .collection-head{display:block;margin-bottom:30px}
+ .collection-head h2{font-size:clamp(67px,15vw,105px)}
+ .collection-head p{margin-top:25px}
+ .collection-grid{grid-template-columns:1fr;gap:35px}
+ .collection-photo{height:520px}
+ .collection-grid>div:nth-child(2) .collection-photo{height:430px}
+ .collection-footer{display:block}
+ .collection-footer .btn{margin-top:15px}
+ .statement{padding:90px 0}
+ .statement .eyebrow{margin-bottom:40px}
+ .statement h2{font-size:clamp(58px,12vw,100px)}
+ .statement-foot{display:block;margin-top:45px}
+ .statement-foot .btn{margin-top:15px}
+ .culture{padding:90px 0}
+ .culture-top{display:block}
+ .culture h2{font-size:clamp(70px,15vw,115px)}
+ .culture-grid{grid-template-columns:1fr}
+ .culture-photo{height:460px}
+ .culture-photo:nth-child(2){margin-top:0}
+ .visit{padding:90px 0}
+ .visit-grid{grid-template-columns:1fr}
+ .visit h2{font-size:clamp(95px,21vw,150px)}
+ .visit-photo{height:480px;grid-row:1}
+ .visit-details{margin-top:40px}
+ footer{padding-top:60px}
+ .footer-top{display:block}
+ .footer-links{gap:60px;margin-top:40px}
+ .footer-logo{font-size:15vw;margin:80px 0 25px}
+ .footer-bottom{flex-direction:column}
+}
+@media(max-width:390px){
+ .hero h1{font-size:12.5vw}
+ .navbook{display:none}
+ .experience-image{height:390px}
+ .collection-photo{height:420px}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="container nav">
+  <a class="wordmark" href="#home" aria-label="Revival Studios home"><span>REVIVAL</span><span>STUDIOS.</span></a>
+  <nav class="navlinks" aria-label="Main navigation">
+   <a href="#barber">Barber</a>
+   <a href="#coffee">Coffee</a>
+   <a href="#clothing">Clothing</a>
+   <a href="#culture">Culture</a>
+   <a href="#visit">Visit</a>
+  </nav>
+  <div class="navright">
+   <a class="navbook" href="#barber">EXPLORE THE STUDIO ↗</a>
+   <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span></button>
+  </div>
+ </div>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+ <a href="#barber">BARBER.</a>
+ <a href="#coffee">COFFEE.</a>
+ <a href="#clothing">CLOTHING.</a>
+ <a href="#culture">CULTURE.</a>
+ <a href="#visit">VISIT.</a>
+</nav>
+
+<main>
+<section class="hero" id="home">
+ <div class="hero-bg"><img src="revival_assets/revival-01.webp" alt="Black and white Revival Studios exterior signage" fetchpriority="high"></div>
+ <div class="container hero-content">
+  <div class="hero-meta"><span>SUBIACO, WESTERN AUSTRALIA</span><span>AN INDEPENDENT CREATIVE SPACE</span></div>
+  <h1 class="display">REVIVAL.</h1>
+  <div class="hero-bottom">
+   <p>The cut. The coffee.<br>The conversation. The community.</p>
+   <a href="#discover" class="btn btn-light">DISCOVER REVIVAL <span class="arrow">↗</span></a>
+  </div>
+ </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+ <div class="ticker-track">
+  <span>THE CUT <i>✳</i> THE COFFEE <i>✳</i> THE CLOTHING <i>✳</i> THE COMMUNITY <i>✳</i></span>
+  <span>THE CUT <i>✳</i> THE COFFEE <i>✳</i> THE CLOTHING <i>✳</i> THE COMMUNITY <i>✳</i></span>
+  <span>THE CUT <i>✳</i> THE COFFEE <i>✳</i> THE CLOTHING <i>✳</i> THE COMMUNITY <i>✳</i></span>
+  <span>THE CUT <i>✳</i> THE COFFEE <i>✳</i> THE CLOTHING <i>✳</i> THE COMMUNITY <i>✳</i></span>
+ </div>
+</div>
+
+<section class="intro container" id="discover">
+ <div class="intro-top reveal">
+  <span class="eyebrow">001 / THE IDEA</span>
+  <h2 class="display">NOT JUST<br>ANOTHER <em>PLACE.</em></h2>
+ </div>
+ <div class="intro-bottom reveal">
+  <span class="num">REVIVAL STUDIOS — PERTH / SUBIACO</span>
+  <div>
+   <p>Some places are made to be visited. Others are made to be experienced.</p>
+   <p>Revival brings together considered barbering, good coffee, independent style and the people who make it all worthwhile. Different worlds, one shared space.</p>
+   <a class="btn" href="#barber">EXPLORE OUR WORLD <span class="arrow">↗</span></a>
+  </div>
+ </div>
+</section>
+
+<section class="experiences" aria-label="Explore Revival Studios">
+ <div class="container section-label"><span>THE REVIVAL EXPERIENCE</span><span>THREE WORLDS. ONE STUDIO.</span></div>
+
+ <article class="experience" id="barber">
+  <div class="experience-image">
+   <img src="revival_assets/revival-02.webp" alt="Contemporary Revival Studios interior with retail display and coffee counter" loading="lazy">
+   <span class="photo-note">01 / THE STUDIO</span>
+  </div>
+  <div class="experience-copy">
+   <div class="experience-index"><span>01 / THE CUT</span><span>REVIVAL BARBERING</span></div>
+   <div>
+    <h3 class="display">THE<br>CUT.</h3>
+    <p>More than a fresh look. A place to switch off, settle in and leave feeling like yourself. Barbering with attention to the details that matter.</p>
+    <a class="btn" href="#visit">VISIT THE STUDIO <span class="arrow">↗</span></a>
+   </div>
+   <span class="eyebrow">CRAFT / DETAIL / EXPERIENCE</span>
+  </div>
+ </article>
+
+ <article class="experience reverse" id="coffee">
+  <div class="experience-image">
+   <img src="revival_assets/revival-03.webp" alt="Matcha and coffee served on a metal tray inside Revival Studios" loading="lazy">
+   <span class="photo-note">02 / THE DAILY RITUAL</span>
+  </div>
+  <div class="experience-copy">
+   <div class="experience-index"><span>02 / THE COFFEE</span><span>TAKE YOUR TIME</span></div>
+   <div>
+    <h3 class="display">THE<br>COFFEE.</h3>
+    <p>Good coffee. Matcha. A little time out of your day. Whether you're here for a cut or just passing through, there's always room to stay a while.</p>
+    <a class="btn" href="#visit">COME THROUGH <span class="arrow">↗</span></a>
+   </div>
+   <span class="eyebrow">COFFEE / MATCHA / CONNECTION</span>
+  </div>
+ </article>
+
+ <article class="experience" id="clothing">
+  <div class="experience-image">
+   <img src="revival_assets/revival-04.webp" alt="Revival Studios black and white clothing collection presented by three models" loading="lazy">
+   <span class="photo-note">03 / THE UNIFORM</span>
+  </div>
+  <div class="experience-copy">
+   <div class="experience-index"><span>03 / THE CLOTHING</span><span>REVIVAL APPAREL</span></div>
+   <div>
+    <h3 class="display">THE<br>FIT.</h3>
+    <p>A uniform for the everyday. Clean silhouettes, expressive details and pieces that carry the Revival identity beyond the studio.</p>
+    <a class="btn btn-light" href="#collection">VIEW THE COLLECTION <span class="arrow">↗</span></a>
+   </div>
+   <span class="eyebrow">INDEPENDENT / CONSIDERED / REVIVAL</span>
+  </div>
+ </article>
+</section>
+
+<section class="full-image" aria-label="Inside Revival Studios">
+ <img src="revival_assets/revival-07.webp" alt="Moody film-style photography of the Revival Studios café counter" loading="lazy">
+ <div class="full-image-overlay">
+  <span class="eyebrow">AN EVERYDAY RITUAL / SUBIACO</span>
+  <div>
+   <h2 class="display">STAY<br>A WHILE.</h2>
+   <p>Come for one thing. Discover something else. That's the beauty of a space that brings people together.</p>
+  </div>
+  <span class="eyebrow">THE SPACE BETWEEN THE EVERYDAY.</span>
+ </div>
+</section>
+
+<section class="collection" id="collection">
+ <div class="container">
+  <div class="collection-head reveal">
+   <div>
+    <span class="eyebrow">REVIVAL STUDIOS / APPAREL</span>
+    <h2 class="display">THE<br>UNIFORM.</h2>
+   </div>
+   <p>Made to be worn. Made to be lived in. An extension of the studio and the people around it.</p>
+  </div>
+  <div class="collection-grid">
+   <div class="reveal">
+    <div class="collection-photo"><img src="revival_assets/revival-04.webp" alt="Revival Studios branded t-shirts in black and white" loading="lazy"></div>
+    
+    <div class="collection-caption"><span>REVIVAL STUDIOS / GRAPHIC TEES</span><span>01 ↗</span></div>
+   </div>
+   <div class="reveal">
+    <div class="collection-photo">
+     <img src="revival_assets/revival-08.webp" alt="Revival Studios apparel displayed on clothing rails" loading="lazy">
+    </div>
+    <div class="collection-caption"><span>THE IN-STUDIO COLLECTION</span><span>02 ↗</span></div>
+   </div>
+  </div>
+  <div class="collection-footer">
+   <p>Discover the pieces in person at Revival Studios. Availability and collections may vary.</p>
+   <a class="btn" href="#visit">FIND THE STUDIO <span class="arrow">↗</span></a>
+  </div>
+ </div>
+</section>
+
+<section class="statement">
+ <div class="container">
+  <span class="eyebrow">MORE THAN A BUSINESS / A PLACE TO BELONG</span>
+  <h2 class="display reveal">GOOD CUTS.<br>GOOD COFFEE.<br><em>GOOD PEOPLE.</em></h2>
+  <div class="statement-foot">
+   <p>Built around the simple things done well. A space to meet, create, connect and keep coming back to.</p>
+   <a class="btn" href="#culture">THE COMMUNITY <span class="arrow">↗</span></a>
+  </div>
+ </div>
+</section>
+
+<section class="culture" id="culture">
+ <div class="container">
+  <div class="culture-top">
+   <div class="reveal">
+    <span class="eyebrow">BEYOND THE EVERYDAY</span>
+    <h2 class="display">THE<br>PEOPLE.</h2>
+   </div>
+   <p>Revival is as much about who's in the room as what's on the shelves. A meeting place for local style, creative energy and community.</p>
+  </div>
+  <div class="culture-grid">
+   <div>
+    <div class="culture-photo">
+     <img src="revival_assets/revival-06.webp" alt="Revival Studios entrance and retail frontage in Subiaco" loading="lazy">
+    </div>
+    <div class="culture-caption">
+     <span>THE NEIGHBOURHOOD</span>
+     <span>SUBIACO / WA</span>
+    </div>
+   </div>
+   <div>
+    <div class="culture-photo">
+     <img src="revival_assets/revival-09.webp" alt="Community gathering inside Revival Studios" loading="lazy">
+    </div>
+    <div class="culture-caption">
+     <span>THE COMMUNITY</span>
+     <span>INSIDE REVIVAL</span>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="visit" id="visit">
+ <div class="container visit-grid">
+  <div>
+   <span class="eyebrow">COME FIND US / PERTH, WA</span>
+   <h2 class="display reveal">PULL<br>UP.</h2>
+   <p>Drop in for a coffee. Find your next favourite piece. Get to know the space. There's more than one reason to visit Revival.</p>
+
+   <div class="visit-details">
+    <div>
+     <strong>LOCATION</strong>
+     <span>Subiaco, Perth<br>Western Australia</span>
+    </div>
+    <div>
+     <strong>EXPERIENCE</strong>
+     <span>Barber / Coffee / Matcha<br>Clothing / Community</span>
+    </div>
+    <div>
+     <strong>BOOKINGS</strong>
+     <span>Enquire with the studio<br>for current availability</span>
+    </div>
+   </div>
+
+   <div class="visit-actions">
+    <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Revival+Studios+Subiaco+Perth" target="_blank" rel="noopener noreferrer">GET DIRECTIONS <span class="arrow">↗</span></a>
+    <a class="btn" href="https://www.revivalstudios.com.au/" target="_blank" rel="noopener noreferrer">OFFICIAL WEBSITE <span class="arrow">↗</span></a>
+   </div>
+  </div>
+  <div class="visit-photo">
+   <img src="revival_assets/revival-05.webp" alt="Revival Studios shopfront and illuminated signage" loading="lazy">
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <div class="footer-top">
+   <div>
+    <a class="wordmark" href="#home">
+     <span>REVIVAL</span>
+     <span>STUDIOS.</span>
+    </a>
+    <p>The cut. The coffee. The clothing. The community. All under one roof in Subiaco, Western Australia.</p>
+   </div>
+
+   <div class="footer-links">
+    <div>
+     <span class="eyebrow">EXPLORE</span>
+     <a href="#barber">Barber</a>
+     <a href="#coffee">Coffee</a>
+     <a href="#clothing">Clothing</a>
+     <a href="#culture">Culture</a>
+    </div>
+    <div>
+     <span class="eyebrow">CONNECT</span>
+     <a href="#visit">Visit us</a>
+     <a href="https://www.revivalstudios.com.au/" target="_blank" rel="noopener noreferrer">Official site ↗</a>
+     <a href="#home">Back to top ↑</a>
+    </div>
+   </div>
+  </div>
+
+  <div class="footer-logo display">REVIVAL.</div>
+
+  <div class="footer-bottom">
+   <span>© <span id="year"></span> REVIVAL STUDIOS — CONCEPT WEBSITE</span>
+   <span>SUBIACO / WESTERN AUSTRALIA</span>
+   <span>DESIGN CONCEPT BY COMPETITIVE MARKETING</span>
+  </div>
+ </div>
+</footer>
+
+<script>
+const menuToggle=document.getElementById("menuToggle");
+const mobileMenu=document.getElementById("mobileMenu");
+
+function setMenu(open){
+ mobileMenu.classList.toggle("open",open);
+ document.body.classList.toggle("lock",open);
+ menuToggle.setAttribute("aria-expanded",String(open));
+ menuToggle.setAttribute("aria-label",open?"Close menu":"Open menu");
+}
+
+menuToggle.addEventListener("click",()=>{
+ setMenu(!mobileMenu.classList.contains("open"));
+});
+
+mobileMenu.querySelectorAll("a").forEach(a=>{
+ a.addEventListener("click",()=>setMenu(false));
+});
+
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape")setMenu(false);
+});
+
+document.getElementById("year").textContent=new Date().getFullYear();
+
+if("IntersectionObserver" in window){
+ const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+   if(entry.isIntersecting){
+    entry.target.classList.add("visible");
+    observer.unobserve(entry.target);
+   }
+  });
+ },{threshold:.08});
+
+ document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+}else{
+ document.querySelectorAll(".reveal").forEach(el=>el.classList.add("visible"));
+}
+</script>
+
+</body>
+</html>
